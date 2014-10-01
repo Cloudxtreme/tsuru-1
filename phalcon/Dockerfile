@@ -16,7 +16,7 @@ RUN yum install git -y
 RUN yum install httpd -y
 RUN useradd -r -M supervisord
 RUN chown -R supervisord /var/log/supervisord
-RUN curl https://raw.githubusercontent.com/longthanhtran/tsuru/master/phalcon/supervisord.conf -o /tmp/supervisord.conf
+RUN wget https://raw.githubusercontent.com/longthanhtran/tsuru/master/phalcon/supervisord.conf -O /tmp/supervisord.conf
 ADD /tmp/supervisord.conf /etc/supervisord.conf
 EXPOSE 22 80
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
