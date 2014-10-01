@@ -10,12 +10,13 @@ RUN yum update -y
 RUN yum install python-setuptools -y
 RUN easy_install supervisor
 RUN mkdir -p /var/log/supervisord
-RUN yum install which wget -y
+RUN yum install which -y
+RUN yum install wget -y
 RUN yum install git -y
 RUN yum install httpd -y
 RUN useradd -r -M supervisord
 RUN chown -R supervisord /var/log/supervisord
-RUN wget https://raw.githubusercontent.com/longthanhtran/tsuru/master/phalcon/supervisord.conf -O /tmp/supervisord.conf
+RUN curl https://raw.githubusercontent.com/longthanhtran/tsuru/master/phalcon/supervisord.conf -o /tmp/supervisord.conf
 ADD /tmp/supervisord.conf /etc/supervisord.conf
 EXPOSE 22 80
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
