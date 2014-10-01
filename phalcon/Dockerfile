@@ -10,7 +10,7 @@ RUN yum update -y
 RUN yum install python-setuptools -y
 RUN easy_install supervisor
 RUN mkdir -p /var/log/supervisord
-RUN yum install which -y
+RUN yum install which wget -y
 RUN yum install git -y
 RUN yum install httpd -y
 RUN useradd -r -M supervisord
